@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { gql, useQuery } from '@apollo/client'
-
+import dynamic from 'next/dynamic'
+const Header = dynamic(import('../components/Header'))
 
 const Product = () => {
   const router = useRouter()
@@ -36,6 +37,7 @@ const Product = () => {
   
   return (
     <div>
+    <Header/>
       <h3>Product {data.getProduct.name}</h3>
       <p>upc {data.getProduct.upc}</p>
       <p>price {data.getProduct.price}</p>

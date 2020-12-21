@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { gql, useQuery } from '@apollo/client'
+import dynamic from 'next/dynamic'
+const Header = dynamic(import('../components/Header'))
 
 const GET_TOPPRODUCTS = gql`
 query  {
@@ -21,6 +23,7 @@ const Products = () => {
 
   return ( 
       <div>
+      <Header/>
         <h3>This is our product list</h3>
         <ul>
         {data.topProducts.map(product => (
@@ -32,14 +35,6 @@ const Products = () => {
         ))}
         </ul>
         <a href="/">Home</a>
-        <div>
-          <Image
-            src="/public/nextjs.png"
-            alt="Next.js logo"
-            width={200}
-            height={160}
-          />
-        </div>
       </div>
   )
 }
